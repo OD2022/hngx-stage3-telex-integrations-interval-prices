@@ -61,7 +61,7 @@ def get_integration_json(request: Request):
                     "default": "AAPL"
                 }
             ],
-            "tick_url": str(request.base_url) + "/tick",
+            "tick_url": str(request.base_url) + "tick",
             "target_url": ""
                             }
     }
