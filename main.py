@@ -51,7 +51,8 @@ def get_integration_json(request: Request):
                     "label": "interval",
                     "type": "text",
                     "required": True,
-                    "default": "0 * * * *"
+                    "default": "0 */2 * * *"
+
                 },
                 {
                     "label": "Stock Symbol",
