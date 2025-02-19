@@ -51,39 +51,13 @@ def get_integration_json(request: Request):
                     "label": "interval",
                     "type": "text",
                     "required": True,
-                    "default": "* * * * *"
+                    "default": "0 * * * *"
                 },
                 {
-                    "label": "Key",
+                    "label": "Stock Symbol",
                     "type": "text",
                     "required": True,
-                    "default": "1234567890"
-                },
-                {
-                    "label": "Do you want to continue",
-                    "type": "checkbox",
-                    "required": True,
-                    "default": "Yes"
-                },
-                {
-                    "label": "Provide Speed",
-                    "type": "number",
-                    "required": True,
-                    "default": "1000"
-                },
-                {
-                    "label": "Sensitivity Level",
-                    "type": "dropdown",
-                    "required": True,
-                    "default": "Low",
-                    "options": ["High", "Low"]
-                },
-                {
-                    "label": "Alert Admin",
-                    "type": "multi-checkbox",
-                    "required": True,
-                    "default": "Super-Admin",
-                    "options": ["Super-Admin", "Admin", "Manager", "Developer"]
+                    "default": "AAPL"
                 }
             ],
             "tick_url": str(request.base_url) + "/tick"
