@@ -29,10 +29,10 @@ def get_integration_json(request: Request):
                 "Customizable uptime checks",
                 "Easy-to-use interface",
                 "Cron-based interval scheduling"
-            ]
+            ],
+            "integration_category": "Finance & Payments"  
         }
     }
-
 
 
 
