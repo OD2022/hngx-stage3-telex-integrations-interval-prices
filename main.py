@@ -23,9 +23,16 @@ def get_integration_json(request: Request):
                 {"label": "site-2", "type": "text", "required": True, "default": ""},
                 {"label": "interval", "type": "text", "required": True, "default": "* * * * *"}
             ],
-            "tick_url": f"{base_url}/tick"
+            "tick_url": f"{base_url}/tick",
+            "key_features": [
+                "Monitor multiple websites",
+                "Customizable uptime checks",
+                "Easy-to-use interface",
+                "Cron-based interval scheduling"
+            ]
         }
     }
+
 
 
 
