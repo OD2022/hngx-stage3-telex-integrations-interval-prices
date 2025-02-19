@@ -22,8 +22,8 @@ def get_integration_json(request: Request):
             },
             "descriptions": {
                 "app_description": "A brief description of the application functionality.",
-                "app_logo": "URL to the application logo.",
-                "app_name": "Name of the application.",
+                "app_logo": "https://www.freepik.com/free-psd/shiny-gold-silver-bars-precious-metals-wealth-luxury-finance_413019857.htm#fromView=search&page=1&position=2&uuid=dd537f7d-b9a6-47a4-aa4e-8394d71f20c0&query=metals",
+                "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": str(request.base_url),
                 "background_color": "#HEXCODE"
             },
@@ -43,7 +43,7 @@ def get_integration_json(request: Request):
             "permissions": {
                 "monitoring_user": {
                     "always_online": True,
-                    "display_name": "Precious Metals Monitor"
+                    "display_name": "Oluwakiitz Metals"
                 }
             },
             "settings": [
