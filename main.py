@@ -43,7 +43,7 @@ def get_integration_json(request: Request):
             "permissions": {
                 "monitoring_user": {
                     "always_online": True,
-                    "display_name": "Performance Monitor"
+                    "display_name": "Precious Metals Monitor"
                 }
             },
             "settings": [
