@@ -21,7 +21,7 @@ def get_integration_json(request: Request):
                 "updated_at": current_date   # Date of last update
             },
             "descriptions": {
-                "app_description": "A brief description of the application functionality.",
+                "app_description": "Get the prices of precious metals around the world.",
                 "app_logo": "https://www.freepik.com/free-psd/shiny-gold-silver-bars-precious-metals-wealth-luxury-finance_413019857.htm#fromView=search&page=1&position=2&uuid=dd537f7d-b9a6-47a4-aa4e-8394d71f20c0&query=metals",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": str(request.base_url),
@@ -51,9 +51,9 @@ def get_integration_json(request: Request):
                     "label": "interval",
                     "type": "text",
                     "required": True,
-                    "default": "0 */2 * * *"
-
-                },
+                    "default": "* * * * *"
+                }
+                ,
                 {
                     "label": "Stock Symbol",
                     "type": "text",
@@ -72,4 +72,5 @@ def get_integration_json(request: Request):
 @app.post("/tick", status_code=202)
 def monitor(payload: MonitorPayload, background_tasks: BackgroundTasks):
     background_tasks.add_task(monitor_task, payload)
+    print("hii")
     return {"status": "accepted"}
