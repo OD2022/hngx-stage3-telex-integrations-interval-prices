@@ -17,7 +17,7 @@ def get_integration_json(request: Request):
     return {
         "data": {
             "date": {
-                "created_at": current_date,  # Date of creation
+                "created_at": "2025-02-19",  # Date of creation
                 "updated_at": current_date   # Date of last update
             },
             "descriptions": {
@@ -25,11 +25,11 @@ def get_integration_json(request: Request):
                 "app_logo": "https://img.freepik.com/free-psd/shiny-gold-silver-bars-precious-metals-wealth-luxury-finance_632498-58760.jpg?t=st=174",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": str(request.base_url),
-                "background_color": "#HEXCODE"
+                "background_color": "#5F9EA0"
             },
             "integration_category": "Finance & Payments",
             "integration_type": "interval",
-            "is_active": False,
+            "is_active": True,
             "output": [
                 {"label": "output_channel_1", "value": True},
                 {"label": "output_channel_2", "value": False}
