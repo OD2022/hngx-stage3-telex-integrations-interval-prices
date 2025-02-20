@@ -1,9 +1,19 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from fastapi import BackgroundTasks
+from fastapi.middleware.cors import CORSMiddleware
 from MonitorPayload import *
 from datetime import datetime
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://staging.telextest.im", "http://telextest.im", "https://staging.telex.im", "https://telex.im"], # NB: telextest is a local url
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -28,24 +38,18 @@ def get_integration_json(request: Request):
                 "background_color": "#5F9EA0"
             },
             "integration_category": "Finance & Payments",
+            "author": "Ibukun-Oluwa Addy",
             "integration_type": "interval",
-            "is_active": True,
+            "is_active": False,
+            "website": str(request.base_url),
             "output": [
                 {"label": "output_channel_1", "value": True},
                 {"label": "output_channel_2", "value": False}
             ],
             "key_features": [
-                "Feature description 1.",
-                "Feature description 2.",
-                "Feature description 3.",
-                "Feature description 4."
+                "-Monitors Metal Prices Around the world every 10 minutes"
             ],
-            "permissions": {
-                "monitoring_user": {
-                    "always_online": True,
-                    "display_name": "Oluwakiitz Metals"
-                }
-            },
+            
             "settings": [
                 {
                     "label": "interval",
@@ -62,7 +66,7 @@ def get_integration_json(request: Request):
                 }
             ],
             "tick_url": str(request.base_url) + "tick",
-            "target_url": "https://ping.telex.im/v1/webhooks/01951a74-7505-7819-9350-db49b64c7941"
+            "target_url": ""
                             }
     }
 
