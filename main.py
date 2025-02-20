@@ -62,7 +62,7 @@ def get_integration_json(request: Request):
                 }
             ],
             "tick_url": str(request.base_url) + "tick",
-            "target_url": ""
+            "target_url": "https://ping.telex.im/v1/webhooks/01951a74-7505-7819-9350-db49b64c7941"
                             }
     }
 
