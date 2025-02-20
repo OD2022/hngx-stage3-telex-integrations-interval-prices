@@ -24,24 +24,25 @@ def get_home_page():
 @app.get("/integration.json")
 def get_integration_json(request: Request):
     current_date = datetime.now().strftime("%Y-%m-%d")  # Current date in YYYY-MM-DD format
+    base_url = str(request.base_url).rstrip("/")
     return {
         "data": {
             "date": {
                 "created_at": "2025-02-19",  # Date of creation
-                "updated_at": current_date   # Date of last update
+                "updated_at": "2025-02-20"   # Date of last update
             },
             "descriptions": {
                 "app_description": "Get the prices of precious metals around the world.",
                 "app_logo": "https://img.freepik.com/free-photo/closeup-shot-pile-shiny-gold-coins-bars_181624-60854.jpg?t=st=1740074311~exp=1740077911~hmac=7457c9ddb11c2c5796a5034d3531456adc8b8cca3eae39a66d4e725da2c98fd7&w=996",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
-                "app_url": str(request.base_url),
+                "app_url": base_url,
                 "background_color": "#5F9EA0"
             },
             "integration_category": "Finance & Payments",
             "author": "Ibukun-Oluwa Addy",
             "integration_type": "interval",
             "is_active": False,
-            "website": str(request.base_url),
+            "website": base_url,
            
             "key_features": [
                 "-Monitors Metal Prices Around the world every 10 minutes"
@@ -61,7 +62,7 @@ def get_integration_json(request: Request):
                     "default": "AAPL"
                 }
             ],
-            "tick_url": str(request.base_url) + "tick",
+            "tick_url": f"{base_url}/tick",
             "target_url": ""
                             }
     }
