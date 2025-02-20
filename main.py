@@ -46,7 +46,6 @@ def get_integration_json(request: Request):
             "key_features": [
                 "-Monitors Metal Prices Around the world every 10 minutes"
             ],
-            
             "settings": [
                 {
                     "label": "interval",
