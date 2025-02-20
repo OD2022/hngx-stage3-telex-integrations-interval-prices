@@ -72,5 +72,4 @@ def get_integration_json(request: Request):
 @app.post("/tick", status_code=202)
 def monitor(payload: MonitorPayload, background_tasks: BackgroundTasks):
     background_tasks.add_task(monitor_task, payload)
-    print("hii")
     return {"status": "accepted"}
