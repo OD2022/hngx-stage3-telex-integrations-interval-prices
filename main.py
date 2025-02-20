@@ -42,10 +42,7 @@ def get_integration_json(request: Request):
             "integration_type": "interval",
             "is_active": False,
             "website": str(request.base_url),
-            "output": [
-                {"label": "output_channel_1", "value": True},
-                {"label": "output_channel_2", "value": False}
-            ],
+           
             "key_features": [
                 "-Monitors Metal Prices Around the world every 10 minutes"
             ],
