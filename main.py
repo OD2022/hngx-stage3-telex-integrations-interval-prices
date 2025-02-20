@@ -22,7 +22,7 @@ def get_integration_json(request: Request):
             },
             "descriptions": {
                 "app_description": "Get the prices of precious metals around the world.",
-                "app_logo": "https://www.freepik.com/free-psd/shiny-gold-silver-bars-precious-metals-wealth-luxury-finance_413019857.htm#fromView=search&page=1&position=2&uuid=dd537f7d-b9a6-47a4-aa4e-8394d71f20c0&query=metals",
+                "app_logo": "https://img.freepik.com/free-psd/shiny-gold-silver-bars-precious-metals-wealth-luxury-finance_632498-58760.jpg?t=st=174",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": str(request.base_url),
                 "background_color": "#HEXCODE"
