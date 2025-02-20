@@ -48,21 +48,21 @@ async def fetch_stock_data(symbol: str) -> str:
 
 # Background task for monitoring
 async def monitor_task(payload: MonitorPayload):
-    # # Extract Stock Symbol from settings
-    # symbol = next((s.default for s in payload.settings if s.label == "Stock Symbol"), None)
+    # Extract Stock Symbol from settings
+    symbol = next((s.default for s in payload.settings if s.label == "Stock Symbol"), None)
     
-    # if not symbol:
-    #     raise HTTPException(status_code=400, detail="Stock Symbol missing from settings")
+    if not symbol:
+        raise HTTPException(status_code=400, detail="Stock Symbol missing from settings")
     
-    # # Fetch stock data from Alpha Vantage
-    # stock_data = await fetch_stock_data(symbol)
+    # Fetch stock data from Alpha Vantage
+    stock_data = await fetch_stock_data(symbol)
 
     # Prepare the data to send back to the return_url
     data = {
-        "message": "Hiiiiii",
+        "message": stock_data,
         "username": "Financial Data Fetcher",
         "event_name": "Stock Price Check",
-        "status": "success"
+        "status": "success" 
     }
 
     # Send the response to the return_url
