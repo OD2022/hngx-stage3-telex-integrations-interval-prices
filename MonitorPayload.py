@@ -69,9 +69,10 @@ async def monitor_task(payload: MonitorPayload):
         "status": "success" 
     }
 
+    headers = {"Content-Type": "application/json"}
     # Send the response to the return_url
     async with httpx.AsyncClient() as client:
-        await client.post(payload.return_url, json=data)    
+        await client.post(payload.return_url, json=data, headers=headers)    
 
 
 
