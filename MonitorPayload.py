@@ -1,9 +1,12 @@
 import os
+from dotenv import load_dotenv
 from fastapi import FastAPI, BackgroundTasks, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 import httpx
 import asyncio
+
+load_dotenv() 
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -45,6 +48,7 @@ async def fetch_stock_data(symbol: str) -> str:
             return f"Alpha Vantage API error: {response.status_code}"
     except Exception as e:
         return f"Error fetching data: {str(e)}"
+    
 
 # Background task for monitoring
 async def monitor_task(payload: MonitorPayload):
@@ -69,3 +73,10 @@ async def monitor_task(payload: MonitorPayload):
     async with httpx.AsyncClient() as client:
         await client.post(payload.return_url, json=data)    
 
+
+
+# async def printresult():
+#     print(await fetch_stock_data("AAPL"))
+
+# # Run the async function in an event loop
+# asyncio.run(printresult())
