@@ -32,11 +32,11 @@ def get_integration_json(request: Request):
                 "updated_at": "2025-02-20"   # Date of last update
             },
             "descriptions": {
-                "app_description": "Get the prices of precious metals around the world.",
-                "app_logo": "https://img.freepik.com/free-photo/closeup-shot-pile-shiny-gold-coins-bars_181624-60854.jpg?t=st=1740074311~exp=1740077911~hmac=7457c9ddb11c2c5796a5034d3531456adc8b8cca3eae39a66d4e725da2c98fd7&w=996",
+                "app_description": "Get the global prices of precious metals in USD.",
+                "app_logo": "https://img.freepik.com/free-vector/realistic-gold-metallic-button-brushed-surface-texture_1017-17738.jpg?t=st=1740137405~exp=1740141005~hmac=c93ecdb97a52b51bb5ea27b470f81427c9bca3a658d59f0d8181ed75dd71e6aa&w=826",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": base_url,
-                "background_color": "#5F9EA0"
+                "background_color": "#FFD700"
             },
             "integration_category": "Finance & Payments",
             "author": "Ibukun-Oluwa Addy",
@@ -45,23 +45,23 @@ def get_integration_json(request: Request):
             "website": base_url,
            
             "key_features": [
-                "-Monitors Metal Prices Around the world every 10 minutes"
+                "-Monitors Metal Prices Around the world every two hours"
             ],
-            "settings": [
-                {
-                    "label": "interval",
-                    "type": "text",
-                    "required": True,
-                    "default": "*/30 * * * *"
-                }
-                ,
-                {
-                    "label": "Stock Symbol",
-                    "type": "text",
-                    "required": True,
-                    "default": "AAPL"
-                }
-            ],
+                "settings": [
+            {
+                "label": "interval",
+                "type": "text",
+                "required": True,
+                "default": "0 */2 * * *"
+            },
+            {
+                "label": "Metal",
+                "type": "dropdown",
+                "required": True,
+                "default": "gold",
+                "options": ["gold", "silver"]
+            }
+        ],
             "tick_url": f"{base_url}/tick",
             "target_url": ""
                             }
