@@ -52,7 +52,7 @@ def get_integration_json(request: Request):
                 "label": "interval",
                 "type": "text",
                 "required": True,
-                "default": "0 */2 * * *"
+                "default": "0 */5 * * *"
             },
            {
             "label": "Metal",
