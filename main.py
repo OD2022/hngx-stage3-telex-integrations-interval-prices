@@ -23,7 +23,7 @@ def get_home_page():
 
 @app.get("/integration.json")
 def get_integration_json(request: Request):
-    current_date = datetime.now().strftime("%Y-%m-%d")  # Current date in YYYY-MM-DD format
+    #current_date = datetime.now().strftime("%Y-%m-%d")  # Current date in YYYY-MM-DD format
     base_url = str(request.base_url).rstrip("/")
     return {
         "data": {
@@ -32,7 +32,7 @@ def get_integration_json(request: Request):
                 "updated_at": "2025-02-20"   # Date of last update
             },
             "descriptions": {
-                "app_description": "Get the global prices of precious metals in USD.",
+                "app_description": "Get the global prices of precious metals in USD, every 5 hours.",
                 "app_logo": "https://img.freepik.com/free-vector/realistic-gold-metallic-button-brushed-surface-texture_1017-17738.jpg?t=st=1740137405~exp=1740141005~hmac=c93ecdb97a52b51bb5ea27b470f81427c9bca3a658d59f0d8181ed75dd71e6aa&w=826",
                 "app_name": "Oluwakiitz Precious Metals Monitor",
                 "app_url": base_url,
@@ -45,7 +45,7 @@ def get_integration_json(request: Request):
             "website": base_url,
            
             "key_features": [
-                "-Monitors Metal Prices Around the world every two hours"
+                "-Receive Metal Prices Around the world every five hours"
             ],
                 "settings": [
             {
