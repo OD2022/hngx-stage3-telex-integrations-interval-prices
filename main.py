@@ -54,13 +54,13 @@ def get_integration_json(request: Request):
                 "required": True,
                 "default": "0 */2 * * *"
             },
-            {
-                "label": "Metal",
-                "type": "dropdown",
-                "required": True,
-                "default": "gold",
-                "options": ["gold", "silver"]
-            }
+           {
+            "label": "Metal",
+            "type": "dropdown",
+            "required": True,
+            "default": "gold",
+            "options": ["gold", "silver", "platinum", "palladium", "copper", "aluminum", "lead", "nickel", "zinc"]
+        }
         ],
             "tick_url": f"{base_url}/tick",
             "target_url": ""

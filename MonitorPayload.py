@@ -23,34 +23,51 @@ class MonitorPayload(BaseModel):
     return_url: str
     settings: List[Setting]
 
-# Fetch precious metals data using Alpha Vantage (for free tier)
+
 async def fetch_precious_metals_data(metal: str) -> str:
-    # Get the API key from environment variables (from Alpha Vantage)
-    api_key = os.getenv("ALPHA_VANTAGE_API_KEY")
+    api_key = os.getenv("METALS_DEV_API_KEY")
     
     if not api_key:
         raise HTTPException(status_code=400, detail="API Key not found in environment variables")
 
-    # Alpha Vantage API endpoint for commodities (gold, silver)
+    # metals.dev API endpoint for metals (gold, silver, copper, etc.)
+    metal_symbol = ""
     if metal.lower() == "gold":
-        url = f"https://www.alphavantage.co/query?function=COMMODITY_MONTHLY&symbol=XAUUSD&apikey={api_key}"
+        metal_symbol = "gold"
     elif metal.lower() == "silver":
-        url = f"https://www.alphavantage.co/query?function=COMMODITY_MONTHLY&symbol=XAGUSD&apikey={api_key}"
+        metal_symbol = "silver"
+    elif metal.lower() == "platinum":
+        metal_symbol = "platinum"
+    elif metal.lower() == "palladium":
+        metal_symbol = "palladium"
+    elif metal.lower() == "copper":
+        metal_symbol = "copper"
+    elif metal.lower() == "aluminum":
+        metal_symbol = "aluminum"
+    elif metal.lower() == "lead":
+        metal_symbol = "lead"
+    elif metal.lower() == "nickel":
+        metal_symbol = "nickel"
+    elif metal.lower() == "zinc":
+        metal_symbol = "zinc"
     else:
-        raise HTTPException(status_code=400, detail="Unsupported metal. Only gold and silver are available.")
+        raise HTTPException(status_code=400, detail="Unsupported metal. Available metals are gold, silver, platinum, palladium, copper, aluminum, lead, nickel, and zinc.")
+    
+    # Constructing the API URL with the provided format
+    url = f"https://api.metals.dev/v1/latest?api_key={api_key}&currency=USD&unit=toz&symbols={metal_symbol}"
 
     try:
         async with httpx.AsyncClient() as client:
             response = await client.get(url)
             if response.status_code == 200:
                 data = response.json()
-                if "Monthly Adjusted Commodity Prices" in data:
-                    monthly_data = data["Monthly Adjusted Commodity Prices"]
-                    latest_month = list(monthly_data.keys())[0]
-                    price = monthly_data[latest_month]["close"]
-                    return f"Current {metal.capitalize()} price (USD): ${price}"
-                return "No monthly commodity price data found."
-            return f"Alpha Vantage API error: {response.status_code}"
+                if "status" in data and data["status"] == "success" and "metals" in data:
+                    if metal_symbol in data["metals"]:
+                        price = data["metals"][metal_symbol]
+                        return f"Current {metal.capitalize()} price (USD per ounce): ${price}"
+                    return f"Price data for {metal} is not available."
+                return "Error: Unable to retrieve data from the Metals API."
+            return f"Metals API error: {response.status_code}"
     except Exception as e:
         return f"Error fetching data: {str(e)}"
 
