@@ -6,6 +6,7 @@ The Precious Monitor monitors the prices of precious metals in USD.
 This is an interval integration so you must define an interval in the settings for it to work. The default settings specify an interval field so when it is added to your organisation, you can go ahead to modify it.
 
 **Remember to add your Metals Dev API key in a secure .env file, either in your private repository or server.**
+https://metals.dev
 
 ## Setting Up
 
